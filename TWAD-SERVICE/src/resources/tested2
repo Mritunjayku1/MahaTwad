@@ -1,0 +1,4 @@
+select * from app where app_id='WI20180005'
+
+select  paid_final_statusid ,paid_processing_fee, paid_final_fee, payment_type,   processing_statusid , status_flag, tentative_date ,sms_id ,category_id ,ce_status, ee_status, mc_status
+ from app

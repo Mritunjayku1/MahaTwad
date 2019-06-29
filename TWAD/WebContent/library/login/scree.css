@@ -1,0 +1,23 @@
+/ Pro tips, use inches to specify mobile 
+@media  only screen and (max-width: 5in)
+{
+   
+}
+
+// iPhone sized specific styles
+@media  screen and (min-width: 200px) and (max-device-width: 640px) and (orientation:portrait) and (max-width: 5in)
+{
+    
+}
+
+// High end Android device
+@media  screen and (min-width: 600px) and (max-device-width: 1280px) and (orientation:portrait) and (max-width: 5in)
+{
+    
+}
+
+// tablets
+@media  screen and (min-width: 600px) and (max-device-width: 1280px) and (orientation:portrait) and (min-width: 6in)
+{
+    
+}

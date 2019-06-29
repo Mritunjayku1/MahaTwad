@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database connection mysql settings -->
+
+		<!-- <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> 
+			<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
+			<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> 
+			<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+			<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/water_dev</property> 
+			<property name="hibernate.connection.username">root</property> <property 
+			name="hibernate.connection.password">root</property> <property name="hibernate.connection.autocommit">false</property> -->
+			
+			
+		<!-- Database connection Oracle settings -->
+
+		<!-- <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.OracleDialectt</property>
+<property name=”hibernate.connection.url”>jdbc:oracle:thin:@host:1521:databaseName</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin://localhost:1521/waterOracle</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">arun@123</property>
+		 <property name="hibernate.connection.password">maha</property> 
+		<property name="hibernate.connection.autocommit">false</property> -->
+
+
+		<!-- Database connection Postsgres settings -->
+ 
+		<!-- <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/waterOracle</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">arun@123</property>
+		 <property name="hibernate.connection.password">maha</property> 
+		<property name="hibernate.connection.autocommit">false</property> -->
+
+
+<!-- 	 JAY ORACLE -->
+ 
+	<!--  <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> 
+			<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
+			<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> 
+			<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> 
+			<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/waterOracle</property> 
+			<property name="hibernate.connection.username">root</property> 
+			<property name="hibernate.connection.password">root</property> 
+			<property name="hibernate.connection.autocommit">false</property> 
+			 -->
+			
+			
+			
+		<!-- 	 MAHA ORACLE -->
+			
+	     <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/TwadOracle</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">maha</property>
+		<property name="hibernate.connection.autocommit">false</property>
+
+<!-- live configuration -->
+ <!-- <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property> 
+			<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property> 
+			<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> 
+			<property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property> 
+			<property name="hibernate.connection.url">jdbc:oracle:thin:@111.93.109.169:1526:TEST</property> 
+			<property name="hibernate.connection.username">cmwconn</property> 
+			<property name="hibernate.connection.password">cmwconn</property> 
+			<property name="hibernate.connection.autocommit">false</property>  -->
+
+
+ 
+
+		<!-- hibernate.c3p0.min_size connection pool -->
+
+		<property name="hibernate.c3p0.min_size">15</property>
+		<property name="hibernate.c3p0.max_size">120</property>
+		<property name="hibernate.c3p0.timeout">1211800</property>
+		<property name="hibernate.c3p0.idle_test_period">300</property>
+		<property name="hibernate.c3p0.max_statements">150</property>
+		<property name="hibernate.connection.autoReconnect">true</property>
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<!-- hibernate.c3p0.min_size connection pool -->
+
+		<!-- SQL dialect -->
+
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<!-- <property name="hbm2ddl.auto">validate</property>  -->
+		
+		  <property name="hbm2ddl.auto">update</property>    
+	 	 <!--  <property name="hbm2ddl.auto">validate</property>  -->
+		  
+		
+		 
+
+		<!-- <mapping class="com.water.model"></mapping> -->
+<!-- 
+		 <mapping class="com.water.bean.OracleDbBean"></mapping>
+		  <mapping class="com.water.bean.CmwWaterDemandBean"></mapping>
+		   <mapping class="com.water.bean.CmwWaterDemandBean"></mapping>
+		 -->
+
+
+
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,196 @@
+INSERT INTO MASTER_ROLE(CREATE_TS,CREATE_USERID,ROLE_DESC,ROLE_NAME,STATUS_FLAG,UPDATE_TS,UPDATE_USERID)       
+        VALUES('2017-06-03','Admin','ChiefExecutive','CE','Y','2017-06-03','Admin');
+                
+                
+ INSERT INTO MASTER_ROLE(CREATE_TS,CREATE_USERID,ROLE_DESC,ROLE_NAME,STATUS_FLAG,UPDATE_TS,UPDATE_USERID)
+            
+                VALUES('2017-06-03','Admin','EngineerExecutive','EE','Y','2017-06-03','Admin');
+                
+  INSERT INTO MASTER_ROLE(CREATE_TS,CREATE_USERID,ROLE_DESC,ROLE_NAME,STATUS_FLAG,UPDATE_TS,UPDATE_USERID)
+            
+                VALUES('2017-06-03','Admin','ManagementCommitti','MC','Y','2017-06-03','Admin');
+                
+ --select * from master_role;
+ 
+                 
+--select * from EMPLOYEE_DTL;  
+                            
+                            
+insert into MASTER_ZONE values('1','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone1');
+insert into MASTER_ZONE values('2','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone2');
+insert into MASTER_ZONE values('3','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone3');
+insert into MASTER_ZONE values('4','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone4');
+insert into MASTER_ZONE values('5','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone5');
+insert into MASTER_ZONE values('6','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone6');
+insert into MASTER_ZONE values('7','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone7');
+insert into MASTER_ZONE values('8','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone8');
+insert into MASTER_ZONE values('9','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone9');
+insert into MASTER_ZONE values('10','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone10');
+insert into MASTER_ZONE values('11','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone11');
+insert into MASTER_ZONE values('12','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone12');
+insert into MASTER_ZONE values('13','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone13');
+insert into MASTER_ZONE values('14','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone14');
+insert into MASTER_ZONE values('15','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad','Zone15');
+
+
+
+insert into sms_temp values('1','2017-06-04 10:10:10','InitialLoad','IntialPayment','Y','2017-06-04 10:10:10','InitialLoad');
+insert into sms_temp values('2','2017-06-04 10:10:10','InitialLoad','CEStatus','Y','2017-06-04 10:10:10','InitialLoad');
+insert into sms_temp values('3','2017-06-04 10:10:10','InitialLoad','EE Inspction Date','Y','2017-06-04 10:10:10','InitialLoad');
+insert into sms_temp values('4','2017-06-04 10:10:10','InitialLoad','EE after Inspection','Y','2017-06-04 10:10:10','InitialLoad');
+
+
+
+
+insert into MASTER_CATEGORY values('1','Commercial (Non water intensive -Metered)','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_CATEGORY values('2','Commercial (Water intensive -Metered)','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_CATEGORY values('3','Private Hospital (Water intensive - Metered)','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_CATEGORY values('4','Institutional (Metered)','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_CATEGORY values('5','All others (Water Intensive - Unmetered)','2017-06-04 10:10:10','InitialLoad','Y','2017-06-04 10:10:10','InitialLoad');
+
+insert into MASTER_RE_CONN values('1','2017-06-04 10:10:10','InitialLoad','Non Payment of Tax','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_RE_CONN values('2','2017-06-04 10:10:10','InitialLoad','Non Payment of Charges','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_RE_CONN values('3','2017-06-04 10:10:10','InitialLoad','Shifting','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_RE_CONN values('4','2017-06-04 10:10:10','InitialLoad','Renewal of Existing Connection','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_STATUS values('1','2017-06-04 10:10:10','InitialLoad','Pending','Y','2017-06-04 10:10:10','InitialLoad');
+insert into MASTER_STATUS values('2','2017-06-04 10:10:10','InitialLoad','Approved','Y','2017-06-04 10:10:10','InitialLoad');
+
+
+
+ INSERT INTO EMPLOYEE_DTL(user_last_name,user_first_name,update_ts,UPDATE_USERID,ADJSTD_HIRE_DATE,CREATE_TS,CREATE_USERID,DPT_NAME,EMAIL_ADDR,LOGIN_PASSWORD,LOGIN_USER_NAME,STATUS_FLAG,ROLE_ID,ZONE_ID)             
+                            VALUES ('CEUSERLAST','CEUSERFIRST','2017-06-03','Admin','2017-06-03','2017-06-03','Admin','ChiefExecutive','ce.lingam2k7@govt.com','CEUSER','CEUSER','Y',1,1);
+                     
+                            
+ INSERT INTO EMPLOYEE_DTL(user_last_name,user_first_name,update_ts,UPDATE_USERID,ADJSTD_HIRE_DATE,CREATE_TS,CREATE_USERID,DPT_NAME,EMAIL_ADDR,LOGIN_PASSWORD,LOGIN_USER_NAME,STATUS_FLAG,ROLE_ID,ZONE_ID)             
+                            VALUES ('EEUSERLAST','EEUSERFIRST','2017-06-03','Admin','2017-06-03','2017-06-03','Admin','EngineerExecutive','ce.lingam2k7@govt.com','EEUSER','EEUSER','Y',2,2);  
+    
+                            
+ INSERT INTO EMPLOYEE_DTL(user_last_name,user_first_name,update_ts,UPDATE_USERID,ADJSTD_HIRE_DATE,CREATE_TS,CREATE_USERID,DPT_NAME,EMAIL_ADDR,LOGIN_PASSWORD,LOGIN_USER_NAME,STATUS_FLAG,ROLE_ID,ZONE_ID)             
+                            VALUES ('EEUSERLAST','EEUSERFIRST','2017-06-03','Admin','2017-06-03','2017-06-03','Admin','Managment','ce.lingam2k7@govt.com','MCUSER','MCUSER','Y',3,3);           
+           
+
+
+
+            
+                            
+                INSERT INTO tblepicdetails
+            (
+            epicid,
+             CreatedDate,
+             ElectoralRollDetails,
+             EpicNumber,
+             KeyMap,
+             ModifiedDate,
+             PollingStationAddress)
+VALUES (
+1,
+        '2017-06-03',
+        'Assemply',
+        '12345',
+        'A',
+        '2017-06-03',
+        'Chennai');
+             
+        
+        INSERT INTO tbldocumentsdetails
+            (
+            documentsdetailid ,
+             ComplaintID,
+             CreatedDate,
+             DocumentOwner,
+             DocumentPath,
+             IsActive,
+             ModifiedDate)
+VALUES (
+1,
+        1,
+        '2017-06-03',
+        1,
+        'D:\Recovery.txt',
+        'Y',
+        '2017-06-03');
+                            
+        
+         INSERT INTO tblmasterfieldcode(fieldcodeid ,Color,CreatedDate,DerivedValue,Icon,IsActive,KeyValue, ModifiedDate,OrderNumber,parentID)
+                                  VALUES(1,'Red','2017-06-03','DerVal','Icon','Y','Succes', '2017-06-03',1,1)
+                            
+        
+        
+        
+        
+        
+        
+        
+  INSERT INTO tblcomplaintdetails
+            (
+            complaintid,
+             PublicCanView,
+             AgentAssignedTime,
+             AssignedAgentComments,
+             AssignedAgentID,
+             AssignedOfficerComments,
+             AssignedOfficerID,
+             ComplaintCategoryID,
+             ComplaintClosedBy,
+             ComplaintContent,
+             ComplaintCreatedBy,
+             ComplaintEscalated,
+             ComplaintEscalationLevel,
+             ComplaintNumber,
+             ComplaintPriority,
+             ComplaintRegisteredBy,
+             ComplaintRegisteredTime,
+             ComplaintRejectCloseTime,
+             ComplaintResolvedTime,
+             ComplaintStatus,
+             ComplaintSubmitterAddress,
+             ComplaintSubmitterEmailID,
+             ComplaintSubmitterMobileNo,
+             ComplaintSubmitterName,
+             ComplaintViolationTypeID,
+             CreatedDate,
+             CustomerFeedBack,
+             location,
+             LocationID,
+             ModifiedDate,
+             OfficerAssignedTime,
+             RejectedReason,
+             complaintSource)
+VALUES (1,
+        'true',
+        '2017-06-03',
+        'AssignedAgentComments',
+        1,
+        'AssignedOfficerComments',
+        1,
+        1,
+        1,
+        'ComplaintContent',
+        1,
+        TRUE,
+        1,
+        '222',
+        1,
+       1,
+        '2017-06-03',
+        '2017-06-03',
+        '2017-06-03',
+        1,
+        'ComplaintSubmitterAddress',
+        'ComplaintSubmitterEmailID',
+        'ComplaintSubmitterMobileNo',
+        'ComplaintSubmitterName',
+        1,
+        '2017-06-03',
+        'CustomerFeedBack',
+        'location',
+        1,
+        '2017-06-03',
+        '2017-06-03',
+        1,
+       1);       
+        
+        
+       
+      
+ 

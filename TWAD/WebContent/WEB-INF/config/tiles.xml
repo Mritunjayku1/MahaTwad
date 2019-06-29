@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Common Tile configuration Start -->
+
+	<definition name="Errorbase.definition"
+		template="/WEB-INF/views/JSP/common/errorTemplate.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<!-- <put-attribute name="headerTop"
+			value="/WEB-INF/views/JSP/common/headerTop.jsp"></put-attribute>  -->
+
+		<put-attribute name="menu" value="/WEB-INF/views/JSP/common/menu.jsp"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<!-- <put-attribute name="footer"
+			value="/WEB-INF/views/JSP/common/footer.jsp"></put-attribute> -->
+	</definition>
+
+
+	<definition name="CEbase.definition"
+		template="/WEB-INF/views/JSP/common/mainTemplate.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="headerTop"
+			value="/WEB-INF/views/JSP/common/headerTop.jsp"></put-attribute>
+		<put-attribute name="headerMenu"
+			value="/WEB-INF/views/JSP/common/ceheaderMenu.jsp"></put-attribute>
+
+		<put-attribute name="menu" value="/WEB-INF/views/JSP/common/menu.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/complaints.jsp"></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/JSP/common/footer.jsp"></put-attribute>
+	</definition>
+
+	<definition name="ConfigrationManagement.definition"
+		template="/WEB-INF/views/JSP/common/mainTemplate.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="headerTop"
+			value="/WEB-INF/views/JSP/common/headerTop.jsp"></put-attribute>
+		<put-attribute name="headerMenu"
+			value="/WEB-INF/views/JSP/common/configrationManagementMenu.jsp"></put-attribute>
+
+		<put-attribute name="menu" value="/WEB-INF/views/JSP/common/menu.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/complaints.jsp"></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/JSP/common/footer.jsp"></put-attribute>
+	</definition>
+	
+
+
+	<definition name="EEbase.definition"
+		template="/WEB-INF/views/JSP/common/mainTemplate.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="headerTop"
+			value="/WEB-INF/views/JSP/common/headerTop.jsp"></put-attribute>
+		<put-attribute name="headerMenu"
+			value="/WEB-INF/views/JSP/common/eeheaderMenu.jsp"></put-attribute>
+
+		<put-attribute name="menu" value="/WEB-INF/views/JSP/common/menu.jsp"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/JSP/common/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="EEbase.ViewForm"
+		template="/WEB-INF/views/JSP/common/mainTemplate.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="headerTop"
+			value="/WEB-INF/views/JSP/common/headerTop.jsp"></put-attribute>
+		<put-attribute name="headerMenu"
+			value=""></put-attribute>
+
+		<put-attribute name="menu" value="/WEB-INF/views/JSP/common/menu.jsp"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/JSP/common/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="MCbase.definition"
+		template="/WEB-INF/views/JSP/common/mainTemplate.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+		<put-attribute name="headerTop"
+			value="/WEB-INF/views/JSP/common/headerTop.jsp"></put-attribute>
+		<put-attribute name="headerMenu"
+			value="/WEB-INF/views/JSP/common/mcheaderMenu.jsp"></put-attribute>
+
+		<put-attribute name="menu" value="/WEB-INF/views/JSP/common/menu.jsp"></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer"
+			value="/WEB-INF/views/JSP/common/footer.jsp"></put-attribute>
+	</definition>
+
+	<!-- Common Tile configuration End -->
+
+	<definition name="configrationManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/userManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="categoryManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/categoryManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="reConnectionTypeManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/reConnectionManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="zoneDivisionManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/zoneDivisionManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="districtManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/districtManagement.jsp"></put-attribute>
+		
+	</definition><definition name="districtTalukManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/districtTalukManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="talukVillageManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/talukVillageManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="villageSchemeManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/villageSchemeManagement.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="regionManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/regionManagement.jsp"></put-attribute>
+		
+	</definition>
+	<definition name="regionCircleManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/regionCircleManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="circleDivisionManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/circleDivisionManagement.jsp"></put-attribute>
+	</definition>
+	<definition name="divisionSubDivisionManagement" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/divisionSubDivisionManagement.jsp"></put-attribute>
+	</definition>
+	
+	
+    <definition name="officeLocation" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/officeLocation.jsp"></put-attribute>
+	</definition>
+	
+	 <definition name="paymentType" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/paymentType.jsp"></put-attribute>
+	</definition>
+	
+	 <definition name="payment" extends="ConfigrationManagement.definition">
+		<put-attribute name="title" value="E-Water | Configration Management"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Form/payment.jsp"></put-attribute>
+	</definition>
+
+	<!-- CE Tiles configuration Start -->
+
+<definition name="changePasswordPage" extends="EEbase.definition"
+		template="/WEB-INF/views/JSP/common/changePassword.jsp">
+
+	</definition>
+
+
+<definition name="CEViewForm" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Home"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/CEViewForm.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="CEhomePage" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Home"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/common/home.jsp"></put-attribute>
+	</definition>
+
+	<definition name="ceDashboard" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | CE Dashboard"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/cedashboard.jsp"></put-attribute>
+	</definition>
+
+	<definition name="ceViewApp" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | CE View App"></put-attribute>
+		<put-attribute name="body"
+		
+			value="/WEB-INF/views/JSP/Application/ceviewApp.jsp"></put-attribute>
+	</definition>
+	<definition name="ceApproved" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | CE Approved App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/ceapproved.jsp"></put-attribute>
+	</definition>
+<definition name="eeApproved" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Approved App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeapproved.jsp"></put-attribute>
+	</definition>
+	<definition name="ceViewAll" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | CE View All App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/ceViewAll.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="ddPaymentDashboard" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment Dashboard"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/ddPaymentDashboard.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="registeredApplication" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment Dashboard"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/registeredApplication.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="approvedApplication" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment Dashboard"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/approvedApplication.jsp"></put-attribute>
+	</definition>
+	<definition name="transferApplication" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment Dashboard"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/transferApplication.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="rejectedApplication" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment Dashboard"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/rejectedApplication.jsp"></put-attribute>
+	</definition>
+	
+
+	<definition name="ddPaymentPending" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment View App"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/ddPaymentPending.jsp"></put-attribute>
+	</definition>
+	<definition name="ddPaymentRejected" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment View App"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/ddPaymentRejected.jsp"></put-attribute>
+	</definition>
+	<definition name="ddPaymentApproved" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment Approved App"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/ddPaymentApproved.jsp"></put-attribute>
+	</definition>
+	<definition name="ddPaymentViewAll" extends="CEbase.definition">
+		<put-attribute name="title" value="E-Water | Payment View All App"></put-attribute>
+		<put-attribute name="headerMenu" value="/WEB-INF/views/JSP/common/PaymentHeaderMenu.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/ddPaymentViewAll.jsp"></put-attribute>
+	</definition>
+	<definition name="ddPaymentViewForm" extends="EEbase.ViewForm">
+		<put-attribute name="title" value="E-Water | Home"></put-attribute>
+		<put-attribute name="headerMenu" value=""></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/ddPaymentViewForm.jsp"></put-attribute>
+	</definition>
+	
+	
+	
+	<definition name="mcViewAll" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | MC View All App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/mcViewAll.jsp"></put-attribute>
+	</definition>
+	<definition name="eeViewAll" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE View All App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeViewAll.jsp"></put-attribute>
+	</definition>
+	
+	
+
+	<!-- CE Tiles configuration End -->
+
+
+
+
+	<!-- EE Tiles configuration Start -->
+<definition name="EEViewForm" extends="EEbase.ViewForm">
+		<put-attribute name="title" value="E-Water | EE View Forms"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/EEViewForm.jsp"></put-attribute>
+	</definition>
+	<definition name="EEhomePage" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | Home"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/common/home.jsp"></put-attribute>
+	</definition>
+
+	<definition name="eedashboard" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Dashboard"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eedashboard.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="eeViewApp" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE View App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeViewApp.jsp"></put-attribute>
+	</definition>
+
+<definition name="EEApprove" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Approved"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/EEApprove.jsp"></put-attribute>
+	</definition>
+
+	
+
+	<!-- <definition name="eePendingApplication" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eePendingApplication.jsp"></put-attribute>
+	</definition> -->
+	<definition name="eeApplicationFeePending" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeApplicationFeePending.jsp"></put-attribute>
+	</definition>
+	<definition name="eeUpfrontChargesPending" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeUpfrontChargesPending.jsp"></put-attribute>
+	</definition>
+	<definition name="eeFullPaymentPending" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeFullPaymentPending.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="eePaymentPending" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eePaymentPending.jsp"></put-attribute>
+	</definition>
+	<definition name="eePaymentCompleted" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eePaymentCompleted.jsp"></put-attribute>
+	</definition>
+	<definition name="eeInspectedApplication" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeInspectedApplication.jsp"></put-attribute>
+	</definition>
+	<definition name="eeMCApproved" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeMCApproved.jsp"></put-attribute>
+	</definition>
+	<definition name="eeFullPaymentCompleted" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeFullPaymentCompleted.jsp"></put-attribute>
+	</definition>
+	<definition name="eeExecution" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeExecution.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="eeConPaidApp" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Payment Paid"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeConPaidApp.jsp"></put-attribute>
+	</definition>
+	<definition name="eeConPendinApp" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Payment Pending "></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeConPendinApp.jsp"></put-attribute>
+	</definition>
+	<definition name="eeProsFeePendinApp" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Before Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeProsFeePendinApp.jsp"></put-attribute>
+	</definition>
+	
+	
+	
+	<definition name="eeafterInsp" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE After Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeafterInsp.jsp"></put-attribute>
+	</definition>
+	<definition name="eeEstimate" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Estimate Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeEstimate.jsp"></put-attribute>
+	</definition>
+	<definition name="eeMOU" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE MOU Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeMOU.jsp"></put-attribute>
+	</definition>
+	<definition name="eeAEstimate" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE After Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeEstimate.jsp"></put-attribute>
+	</definition>
+	<definition name="eeAMOU" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE After Inspection"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eeAMOU.jsp"></put-attribute>
+	</definition>
+	<definition name="eePayment" extends="EEbase.definition">
+		<put-attribute name="title" value="E-Water | EE Application Dashboard"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eePayment.jsp"></put-attribute>
+	</definition>
+	
+
+
+
+
+
+	<!-- EE Tiles configuration End -->
+
+
+	<!-- MC Tiles configuration Start -->
+	
+	<definition name="MCViewForm" extends="EEbase.ViewForm">
+		<put-attribute name="title" value="E-Water | MC View Form"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/JSP/Application/MCViewForm.jsp"></put-attribute>
+	</definition>
+
+	<definition name="MChomePage" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | MC Home"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/common/home.jsp"></put-attribute>
+	</definition>
+
+	
+	
+	<definition name="mcdashboard" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | MC Application Dashboard"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/mcdashboard.jsp"></put-attribute>
+	</definition>
+	<definition name="mcapproved" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | MC Approved App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/mcapproved.jsp"></put-attribute>
+	</definition>
+
+	<definition name="mcViewapp" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | MC View App"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/mcViewApp.jsp"></put-attribute>
+	</definition>
+	
+	
+	<definition name="eestatus" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | Application Dashboard"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/eestatus.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="cestatus" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | status"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/cestatus.jsp"></put-attribute>
+	</definition>
+
+	<definition name="trackstatus" extends="MCbase.definition">
+		<put-attribute name="title" value="E-Water | Application Dashboard"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Application/trackstatus.jsp"></put-attribute>
+	</definition>
+
+
+	<!-- MC Tiles configuration End -->
+
+
+
+
+
+
+
+
+	<!-- Form Tiles configuration Start -->
+
+	<definition name="base.register"
+		template="/WEB-INF/views/JSP/Form/formRegister.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+
+		<put-attribute name="body" value=""></put-attribute>
+
+	</definition>
+	<definition name="checkApplicationStatus1"
+		template="/WEB-INF/views/JSP/Form/checkApplicationStatus.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+
+		<put-attribute name="body" value=""></put-attribute>
+
+	</definition>
+	<definition name="initialPayment1"
+		template="/WEB-INF/views/JSP/Form/initialPayment.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+
+		<put-attribute name="body" value=""></put-attribute>
+
+	</definition>
+	<definition name="onlinePayment"
+		template="/WEB-INF/views/JSP/Form/onlinePayment.jsp">
+		<put-attribute name="title" value=""></put-attribute>
+
+		<put-attribute name="body" value=""></put-attribute>
+
+	</definition>
+	<definition name="checkApplicationStatus" extends="checkApplicationStatus1">
+		<put-attribute name="title" value="E-Water | Check App Status"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Form/checkApplicationStatus.jsp"></put-attribute>
+	</definition>
+<definition name="initialPayment" extends="initialPayment1">
+		<put-attribute name="title" value="E-Water | Online Payment"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Form/initialPayment.jsp"></put-attribute>
+	</definition>
+	<definition name="onlinePaymentResponse" template="/WEB-INF/views/JSP/Form/OnlinePaymentResponse.jsp">
+		
+		<put-attribute name="body" 
+			value="/WEB-INF/views/JSP/Form/OnlinePaymentResponse.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="onlinePaymentResponseFailure" template="/WEB-INF/views/JSP/Form/onlinePaymentResponseFailure.jsp">
+		
+		<put-attribute name="body" 
+			value="/WEB-INF/views/JSP/Form/onlinePaymentResponseFailure.jsp"></put-attribute>
+	</definition>
+	<definition name="onlineFinalResponseFailure" template="/WEB-INF/views/JSP/Form/onlineFinalResponseFailure.jsp">
+		
+		<put-attribute name="body" 
+			value="/WEB-INF/views/JSP/Form/onlineFinalResponseFailure.jsp"></put-attribute>
+	</definition>
+
+
+	<!-- <definition name="base.adminLogin" template="/WEB-INF/views/JSP/common/adminLogin.jsp"> 
+		<put-attribute name="title" value=""></put-attribute> <put-attribute name="body" 
+		value=""></put-attribute> </definition> -->
+
+	<definition name="formRegister" extends="base.register">
+		<put-attribute name="title" value="E-Water | Form Register"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/Form/formRegister.jsp"></put-attribute>
+	</definition>
+
+	<definition name="adminLogin" extends="EEbase.definition"
+		template="/WEB-INF/views/JSP/common/adminLogin.jsp">
+
+	</definition>
+
+
+
+
+
+	<!-- Form Tiles configuration End -->
+
+
+
+
+	<definition name="index" extends="EEbase.definition"
+		template="/WEB-INF/views/JSP/common/index.jsp">
+
+	</definition>
+
+
+
+
+	<definition name="errorPage" extends="Errorbase.definition">
+		<put-attribute name="title" value="E-Water "></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/JSP/common/errorPage.jsp"></put-attribute>
+	</definition>
+
+	<!-- Common Tile configuration -->
+
+
+
+	<!-- Water of Tamil Nadu -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tiles-definitions>
