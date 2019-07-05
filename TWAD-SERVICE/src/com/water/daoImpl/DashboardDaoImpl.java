@@ -1468,7 +1468,8 @@ public class DashboardDaoImpl implements DashboardDao {
 				           )
 					.add(Restrictions.isNotNull("companyPaymentDtl.paymentAmount"))
 					.add(Restrictions.eq("masterPaymentType.paymentTypeId",1))
-					.add(Restrictions.isNull("companyDtl.division"));
+					.add(Restrictions.isNull("companyDtl.division"))
+					.add(Restrictions.ne("companyDtl.active", 0));
 					cr.setResultTransformer(Transformers.aliasToBean(DDPaymentFormBean.class));
 					
 			
