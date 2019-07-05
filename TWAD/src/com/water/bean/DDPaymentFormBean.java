@@ -71,6 +71,11 @@ public class DDPaymentFormBean {
      private String scheme;
      private String transactionRefNo;
  	 private String bankRefNo;
+ 	 
+ 	 private List<PaymentFormBean> processDtlList;
+ 	
+ 	 
+ 	 
 	
 	public String getMcSLTCUser() {
 		return mcSLTCUser;
@@ -482,6 +487,13 @@ public class DDPaymentFormBean {
 	}
 	public void setFullPayment(Integer fullPayment) {
 		this.fullPayment = fullPayment;
+	}
+	
+	public List<PaymentFormBean> getProcessDtlList() {
+		return processDtlList;
+	}
+	public void setProcessDtlList(List<PaymentFormBean> processDtlList) {
+		this.processDtlList = processDtlList;
 	}
 
 }

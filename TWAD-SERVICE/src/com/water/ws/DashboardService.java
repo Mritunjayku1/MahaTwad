@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -2729,7 +2731,21 @@ else if(app.getActive()==3 && app.getPaymentStatus()==0){
 		return new Gson().toJson(ddPaymentFormBeanList);
 	}
 	
-	
+	@POST
+	@Path("/eeViewAllForExcel")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String eeViewAllForExcel(CompanyDtlBean companyDtlBean){
+		
+		List<CompanyDtl> companyDtlsList = new DashboardDaoImpl().eeViewAll(companyDtlBean);
+		List<DDPaymentFormBean> ddPaymentFormBeanList = new ArrayList<>();
+		for (CompanyDtl app : companyDtlsList) {
+			DDPaymentFormBean formBean = new DDPaymentFormBean();
+			formBean.setAppId(app.getAppId());
+			DDPaymentFormBean ddPaymentFormBean = paymentViewForm(formBean);
+			ddPaymentFormBeanList.add(ddPaymentFormBean);
+		}
+		return new Gson().toJson(ddPaymentFormBeanList);
+	}
 	
 
 	@POST
@@ -2885,6 +2901,13 @@ for(CompanyPaymentDtl companyPaymentDtl :companyPaymentDtlList){
 }
 
 ddPaymentFormBean.setPaymentList(ddPaymentFormBeans);
+
+
+List<PaymentFormBean> processDtlList  = new DashboardDaoImpl().getProcessDtl(ddPaymentFormBean.getAppId(),"EEUSER");
+Collections.sort(processDtlList);
+ddPaymentFormBean.setProcessDtlList(processDtlList);
+
+
 
 		return ddPaymentFormBean;
 	}
@@ -3380,6 +3403,18 @@ DashboardCountBean dashboardBean;
 	return new DashboardDaoImpl().getHeaderList(paymentFormBean);
 	}
 	
+	
+	
+	@POST
+	@Path("eeMoveUpfrontToCompleted")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String eeMoveUpfrontToCompleted(PaymentFormBean paymentFormBean) {
+		
+	return new DashboardDaoImpl().eeMoveUpfrontToCompleted(paymentFormBean);
+	}
+	
+	
 	@POST
 	@Path("eeAddFullPayment")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -3467,6 +3502,17 @@ DashboardCountBean dashboardBean;
 		
 	return new DashboardDaoImpl().mcApprovePayment(paymentFormBean);
 	}
+	
+	@POST
+	@Path("saveEEProcessDtl")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String saveEEProcessDtl(PaymentFormBean paymentFormBean) {
+		
+	return new DashboardDaoImpl().saveEEProcessDtl(paymentFormBean);
+	}
+	
+	
 	
 	
 	@POST

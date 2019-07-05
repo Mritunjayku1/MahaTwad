@@ -1,9 +1,9 @@
 /SQl_Scriptv1.3
-/com
+/com/
 /hibernateoracle.cfg.xml
 /initial_data.sql
 /jay-hibernate.cfg.xml
 /log4j.xml
 /maha-hibernate.cfg.xml
 /prod-hibernate.cfg.xml
-/resources
+/resources/

@@ -49,11 +49,18 @@ height:30px !important;
 	width: 100px;
     height: 30px;
 }
+	
+input[type="radio"]{
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+ 
 
 select {
 	width: 300px;
     height: 35px;
     padding: 5px;
+    margin:3px;
 }
 
 #successMessage {
@@ -308,7 +315,8 @@ $(function() {
 				'paymentDesc':$('#paymentDescId').val(),
 				'legCompName':$('#legCompName').val(),
 				'contactPersonName':$('#contactPersonName').val(),
-				'companyPaymentDtlID':companyPaymentDtlID
+				'companyPaymentDtlID':companyPaymentDtlID,
+				'availability':$("input[name='availabilityOfwater']:checked").val()
 				
 			
 			},
@@ -463,6 +471,22 @@ $(function(){
 <tr><td><span><b>GST Amount:</b></span></td><td>
 			<input placeholder="Ex: 12" type="text" id="gstAmountId" name="gstAmount" readonly="readonly" value="0" style="background-color: lightgrey;"/></td></tr>
  --%>
+ 
+ <tr height="40px"><td><span><b>Availability of Water:</b></span></td><td><table width="70%"> <tr>
+ <td align="center"><input type="radio" name="availabilityOfwater" id="dedicatedId" value="Dedicated" checked="checked"/><label>Dedicated</label></td>
+		<td align="center"><input type="radio" name="availabilityOfwater" id="cwssId"  value="CWSS"/><label>CWSS</label></td>
+ </tr></table>
+			</td></tr>
+		
+ 	<tr><td><span><b>Payment Type:</b></span></td><td>
+			<select  id="paymentTypeId">
+                                <c:forEach items="${list.paymentTypeDtl}" var="app" varStatus="count">
+                                    <option value="${app.getPaymentId()}">${app.getPaymentType()}</option>
+                                </c:forEach>
+            </select></td></tr>
+			
+ 
+ 
 <tr><td><span><b>Upfront Charges:</b></span></td><td>
 			<input placeholder="Ex: 123" type="text" id="totalAmountId" name="totalAmount"/></td></tr>
 

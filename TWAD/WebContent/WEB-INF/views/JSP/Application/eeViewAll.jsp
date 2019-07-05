@@ -66,10 +66,10 @@ $(function(){
 		if(confirm("Are you sure want to Submit ?")){
 			 $.ajax({
 				type:"POST",
-				url:"mcApprovePayment.do",
+				url:"saveEEProcessDtl.do",
 				data:{
-					'paymentDesc':$('#userCommentsId').val(),
-					'appId':appId,'mcUser':$("input[name='mcUser']:checked").val(),'referenceFile':$('#referenceFileId').val(),'referenceDate':$('#referenceDateId').val()},
+					'remarks':$('#userCommentsId').val(),
+					'appId':appId,'eeUser':$("input[name='eeUser']:checked").val(),'referenceFile':$('#referenceFileId').val(),'referenceDate':$('#referenceDateId').val()},
 				success:function(response){
 					alert(response);
 					window.location.reload();
@@ -124,9 +124,9 @@ $(function(){
 		<h2 class="bg_heading">Select User Type</h2>
 		<table width="80%" align="center">
 		<tr>
-		<td align="center"><input type="radio" name="mcUser" id="rtcId" value="RTC" checked="checked"/>SE</td>
-		<td align="center"><input type="radio" name="mcUser" id="sltcId"  value="SLTC"/>CE</td>
-		<td align="center"><input type="radio" name="mcUser" id="boardId" value="Board"/>Board</td>
+		<td align="center"><input type="radio" name="eeUser" id="rtcId" value="SE" checked="checked"/>SE</td>
+		<td align="center"><input type="radio" name="eeUser" id="sltcId"  value="CE"/>CE</td>
+		<td align="center"><input type="radio" name="eeUser" id="boardId" value="Board"/>Board</td>
 		</tr>
 		
 		<tr><td><span><b>Reference File:</b></span></td><td>
@@ -151,9 +151,10 @@ $(function(){
 <table class='table-bordered table table-striped display'
 	style='width: 100%; font-size: 28px;'>
 <tr>
-		<td colspan='8'
+		<td width="80%" align="right"
 			style='text-align: center; background-color: #FCFCF4; font-size: 17px; height: 10px; color: #800000; font-weight: bold;'>
-			View All Application</td>
+			View All Application    </td>
+			<td   width="20%"  align="right"><a href="library/ViewAllApplication.xls" target="_blank" title="Click Here to download all application as excel file">Export All Application As Excel</a></td>
 	</tr>
 </table>
 
@@ -214,9 +215,43 @@ $(function(){
                                              <td class="center">${app.getDivisionName()}</td>
                                             <%--  <td class="center">${app.getReqMld()}</td> --%>
                                               <td class="center"><textarea  name="managementComments" style="width:100%;height:100%;">${app.getManagementComments()}</textarea></td>
-                                                 <td class="center">${app.getMcUser()}</td>
-                                           <td class="center">${app.getMcSLTCUser()}</td>
-                                            <td class="center">${app.getMcBoardUser()}</td>
+                                                 <c:choose>
+                                                 <c:when test="${not empty app.getProcessDtlList()}">
+                                                  <c:forEach items="${app.getProcessDtlList()}" var="process" >
+                                                  
+                                           <c:choose>
+                                                   <c:when test="${'SE' eq process.getEeUser()}">
+                                                 <td class="center">${process.getRemarks()}</td>
+                                                 </c:when>
+                                                 <c:otherwise>
+                                                   <td class="center"></td>
+                                                 </c:otherwise>
+                                                 </c:choose>
+                                                  <c:choose>
+                                                  <c:when test="${'CE' eq process.getEeUser()}">
+                                           <td class="center">${process.getRemarks()}</td>
+                                           </c:when>
+                                            <c:otherwise>
+                                                   <td class="center"></td>
+                                                 </c:otherwise>
+                                            </c:choose>
+                                             <c:choose>
+                                            <c:when test="${'Board' eq process.getEeUser()}">
+                                            <td class="center">${process.getRemarks()}</td>
+                                            </c:when>
+                                             <c:otherwise>
+                                                   <td class="center"></td>
+                                                 </c:otherwise>
+                                            </c:choose>
+                                            </c:forEach>
+                                            </c:when>
+                                             <c:otherwise>
+                                                   <td class="center"></td>
+                                                    <td class="center"></td>
+                                                    <td class="center"></td>                                                
+                                             </c:otherwise>
+                                            </c:choose>
+                                            
                                             <td><input type="button"
 													class="paymentClass" id="${app.getAppId()}" value="Add Process Status"
 													style="width: auto;"/></td>

@@ -11,6 +11,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
@@ -60,6 +61,7 @@ import com.water.model.MasterSubDivision;
 import com.water.model.MasterTaluk;
 import com.water.model.MasterVillage;
 import com.water.model.MasterZone;
+import com.water.model.ProcessDtl;
 import com.water.model.SmsTemp;
 import com.water.util.Constant;
 import com.water.util.HibernateUtil;
@@ -92,6 +94,7 @@ public class DashboardDaoImpl implements DashboardDao {
 		}
 		return appDetails;
 	}
+	
 	@Override
 	public Application getApplicationDetails(ApplicationBean appFormBean) {
 		// TODO Auto-generated method stub
@@ -2325,6 +2328,7 @@ public String eeAddPayment(PaymentFormBean paymentFormBean ){
 	companyDtl.setEeInspectionDate(paymentFormBean.getInspectedDate());
 	companyDtl.setEeReferenceFile(paymentFormBean.getReferenceFile());
 	companyDtl.setEeReferenceDate(paymentFormBean.getReferenceDate());
+	companyDtl.setAvailability(paymentFormBean.getAvailability());
 	
 	companyDtl.setUpdateTs(new Date());
 	companyDtl.setUpdateUserId("Administrator");
@@ -2369,13 +2373,38 @@ finally{
 	}
 
 
+
+
+public String eeMoveUpfrontToCompleted(PaymentFormBean paymentFormBean ){
+	Session session = sessionFactory.openSession();
+	try{
+	Transaction tx1 =  session.beginTransaction();
+	CompanyDtl companyDtl = (CompanyDtl)session.get(CompanyDtl.class,paymentFormBean.getAppId());
+	companyDtl.setEeStatus( (MasterStatus)session.get(MasterStatus.class,4));
+	companyDtl.setActive(2);
+	companyDtl.setUpdateTs(new Date());
+	companyDtl.setUpdateUserId("Administrator");
+	session.update(companyDtl);
+	tx1.commit();
+	}
+	catch(Exception e){
+		e.printStackTrace();
+		return "Payment Not Verified";
+	}
+	finally{
+		session.close();
+	}
+		return "Application moved to payment completed State";
+	
+	}
+
 public String eeAddFullPayment(PaymentFormBean paymentFormBean ){
 	Session session = sessionFactory.openSession();
 	try{
 	Transaction tx1 =  session.beginTransaction();
 	CompanyDtl companyDtl = (CompanyDtl)session.get(CompanyDtl.class,paymentFormBean.getAppId());
 	companyDtl.setEeStatus( (MasterStatus)session.get(MasterStatus.class,3));
-	companyDtl.setActive(2);
+	companyDtl.setActive(3);
 	//companyDtl.setInspectionDate(paymentFormBean.getInspectedDate());
 	companyDtl.setPaymentStatus(0);
 	companyDtl.setEeUpfrontReceiptDate(paymentFormBean.getReceiptDate());
@@ -2563,12 +2592,53 @@ public String mcApprovePayment(PaymentFormBean paymentFormBean ){
 		}
 	
 	
-	/*if(null != companyDtl.getMcUser() && !companyDtl.getMcUser().equals("") && null != companyDtl.getMcSLTCUser() && !companyDtl.getMcSLTCUser().equals("") && null != companyDtl.getMcBoardUser() && !companyDtl.getMcBoardUser().equals(""))
-		companyDtl.setActive(2);*/
+	if(null != companyDtl.getMcUser() && !companyDtl.getMcUser().equals("") && null != companyDtl.getMcSLTCUser() && !companyDtl.getMcSLTCUser().equals("") && null != companyDtl.getMcBoardUser() && !companyDtl.getMcBoardUser().equals(""))
+		companyDtl.setActive(2);
 	
 	session.update(companyDtl);
 	tx1.commit();
 		return "Process status saved";
+	}
+
+
+
+public String saveEEProcessDtl(PaymentFormBean paymentFormBean ){
+	Session session = sessionFactory.openSession();
+	
+	Transaction tx1 =  session.beginTransaction();
+	ProcessDtl processDtl = new ProcessDtl();
+	
+	processDtl.setAppId((CompanyDtl)session.get(CompanyDtl.class,paymentFormBean.getAppId()));
+	processDtl.setEeUser(paymentFormBean.getEeUser());
+	processDtl.setUser("EEUSER");
+	processDtl.setReferenceFile(paymentFormBean.getReferenceFile());
+	processDtl.setReferenceDate(paymentFormBean.getReferenceDate());
+	processDtl.setRemarks(paymentFormBean.getRemarks());
+	processDtl.setCreateTs(new Date());
+	processDtl.setCreateUserId(paymentFormBean.getLoginName());
+		
+	session.save(processDtl);
+	tx1.commit();
+		return "Process status saved";
+	}
+
+
+public List<PaymentFormBean> getProcessDtl(String appId,String user){
+	Session session = sessionFactory.openSession();
+	Criteria cr = session.createCriteria(ProcessDtl.class,"processDtl")
+			.createCriteria("processDtl.appId","companyDtl")
+			.setProjection(Projections.projectionList()
+		            .add(Projections.property("processDtl.eeUser"),"eeUser")
+		            .add(Projections.property("processDtl.referenceFile"),"referenceFile")  
+		            .add(Projections.property("processDtl.referenceDate"),"referenceDate")
+		            .add(Projections.property("processDtl.remarks"),"remarks")
+		            .add(Projections.property("processDtl.createUserId"),"loginName")
+		            )
+			.add(Restrictions.eq("companyDtl.appId", appId))
+			.add(Restrictions.eq("processDtl.user", user))
+			
+	.setResultTransformer(Transformers.aliasToBean(PaymentFormBean.class));
+		return cr.list();
 	}
 
 
@@ -3661,7 +3731,7 @@ sqlQuery.addScalar("appId", new StringType());
 					+ "CompanyPaytDtl.PAYMENT_AMOUNT as paymentAmount, CompanyPaytDtl.MANAGEMENT_COMMENTS as managementComments, "
 					+ "CompanyPaytDtl.PAYMENT_STATUS_FLAG as paymentStatusFlag, CompanyPaytDtl.DD_NO as ddNo, CompanyPaytDtl.DD_DATE as ddDate, "
 					+ "CompanyPaytDtl.DD_BANK_NAME as ddBankName, CompanyPaytDtl.CREATE_TS as createDate, CompanyPaytDtl.TRANSACTION_REF_NO as transactionRefNo, CompanyPaytDtl.BANK_REF_NO as bankRefNo, companydtl1_.LEG_COMP_NAME as legCompName, "
-					+ "companydtl1_.CON_PERSON_NAME as contactPersonName,division2_.HO_DIVISION_NAME as  divisionName, companydtl1_.PAYMENT_STATUS as paymentStatus, companydtl1_.APP_ID as appId "
+					+ "companydtl1_.CON_PERSON_NAME as contactPersonName,division2_.HO_DIVISION_NAME as  divisionName, companydtl1_.PAYMENT_STATUS as paymentStatus, companydtl1_.APP_ID as appId,companydtl1_.AVAILABILITY as availability "
 					+ " from CompanyDtl companydtl1_ left outer join (select * from CompanyPaymentDtl where payment_status_flag='N') CompanyPaytDtl on CompanyPaytDtl.app_id=companydtl1_.app_id inner join "
 					+ "MASTER_STATUS eestatus3_ on companydtl1_.EE_STATUS=eestatus3_.STATUS_ID inner join MASTER_HO_DIVISION division2_ on companydtl1_.DIVISION_ID=division2_.HO_DIVISION_ID left outer join MASTER_PAYMENT_TYPE paymenttyp4_ on CompanyPaytDtl.PAYMENT_TYPE_ID=paymenttyp4_.PAYMENT_TYPE_ID "
 					+ "where eestatus3_.STATUS_ID=2 and division2_.HO_DIVISION_ID="+Integer.parseInt(companyDtlBean.getDivision())+" and companydtl1_.ACTIVE=2";
@@ -3687,6 +3757,7 @@ sqlQuery.addScalar("appId", new StringType());
 			sqlQuery.addScalar("paymentStatus", new IntegerType());
 			
 			sqlQuery.addScalar("appId", new StringType());
+			sqlQuery.addScalar("availability", new StringType());
 			
 			sqlQuery.setResultTransformer(Transformers.aliasToBean(DDPaymentFormBean.class));
 					
@@ -3966,9 +4037,15 @@ sqlQuery.addScalar("appId", new StringType());
 				           )
 					 .add(Restrictions.eq("companyDtl.active", 2))
 					 .add(Restrictions.eq("eeStatus.statusId", 4))
-					 .add(Restrictions.eq("paymentType.paymentTypeId",3))
+					 
 					 .add(Restrictions.eq("division.divisionId", Integer.parseInt(companyDtlBean.getDivision())));
-					
+			
+			Criterion rest1= Restrictions.and(Restrictions.eq("paymentType.paymentTypeId",2), 
+			           Restrictions.eq("companyDtl.availability", "Dedicated"));
+			Criterion rest2= Restrictions.and(Restrictions.eq("paymentType.paymentTypeId",3), 
+			           Restrictions.ne("companyDtl.availability", "Dedicated"));
+			cr.add(Restrictions.or(rest1, rest2));
+			
 							 cr.setResultTransformer(Transformers.aliasToBean(DDPaymentFormBean.class));
 					
 			
@@ -4021,9 +4098,16 @@ sqlQuery.addScalar("appId", new StringType());
 			
 					 .add(Restrictions.eq("companyDtl.active", 2))
 					 .add(Restrictions.eq("eeStatus.statusId", 5))
-					 .add(Restrictions.eq("paymentType.paymentTypeId",3))
+					 
 					 .add(Restrictions.eq("division.divisionId", Integer.parseInt(companyDtlBean.getDivision())));
-							 cr.setResultTransformer(Transformers.aliasToBean(DDPaymentFormBean.class));
+			
+			
+			Criterion rest1= Restrictions.and(Restrictions.eq("paymentType.paymentTypeId",2), 
+			           Restrictions.eq("companyDtl.availability", "Dedicated"));
+			Criterion rest2= Restrictions.and(Restrictions.eq("paymentType.paymentTypeId",3), 
+			           Restrictions.ne("companyDtl.availability", "Dedicated"));
+			cr.add(Restrictions.or(rest1, rest2));
+			 cr.setResultTransformer(Transformers.aliasToBean(DDPaymentFormBean.class));
 					
 			
 			appDetails=cr.list();

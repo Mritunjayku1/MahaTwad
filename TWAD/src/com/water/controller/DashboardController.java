@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -86,6 +87,7 @@ import com.water.bean.VillageFormBean;
 import com.water.bean.VillageSchemeFormBean;
 import com.water.bean.ZoneConstants;
 import com.water.bean.ZoneDivisionFormBean;
+import com.water.util.CreateExlFile;
 
 @Controller
 public class DashboardController {
@@ -258,7 +260,7 @@ public class DashboardController {
 		}
 		@RequestMapping(value = "/eeViewAll", method = RequestMethod.GET)
 	public ModelAndView eeViewAll(
-			@ModelAttribute("dashboardForm") ComplaintBean complaintBean, HttpSession session)
+			@ModelAttribute("dashboardForm") ComplaintBean complaintBean, HttpSession session,HttpServletRequest request)
 			throws JSONException {
 
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -268,7 +270,7 @@ public class DashboardController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 
-CompanyDtlBean companyDtlBean = new CompanyDtlBean();
+        CompanyDtlBean companyDtlBean = new CompanyDtlBean();
 		
 		if(null != session.getAttribute("OfficeId")){
 			  companyDtlBean.setDivision(session.getAttribute("OfficeId").toString());
@@ -278,7 +280,7 @@ CompanyDtlBean companyDtlBean = new CompanyDtlBean();
 		HttpEntity<?> entity = new HttpEntity(companyDtlBean,headers);
 
 		ResponseEntity<String> out = restTemplate.exchange(
-				WaterDashboardService + "eeViewAll",
+				WaterDashboardService + "eeViewAllForExcel",
 
 				HttpMethod.POST, entity, String.class);
 
@@ -295,6 +297,9 @@ CompanyDtlBean companyDtlBean = new CompanyDtlBean();
 		}
 
 		model.put("appBean", applicationBeanList);
+		
+		new CreateExlFile().generateXls(applicationBeanList,request);
+		
 /*		
 		JSONArray jsonArray = new JSONArray(out.getBody().toString());
 
@@ -315,6 +320,10 @@ CompanyDtlBean companyDtlBean = new CompanyDtlBean();
 		// model.put("categoryCount", publicdashboard());
 		return new ModelAndView("eeViewAll", "list", model);
 	}
+		
+		
+		
+		
 	@RequestMapping(value = "/eeApproved", method = RequestMethod.GET)
 	public ModelAndView eeApproved(
 			@ModelAttribute("dashboardForm") ComplaintBean complaintBean)
@@ -4987,6 +4996,27 @@ ResponseEntity<String> out = restTemplate.exchange(
 	}
 	
 	
+	
+	@RequestMapping(value = "/eeMoveUpfrontToCompleted", method = RequestMethod.POST)
+	@ResponseBody
+	public String eeMoveUpfrontToCompleted(PaymentFormBean paymentFormBean) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+
+		HttpEntity<?> entity = new HttpEntity(paymentFormBean,headers);
+
+		ResponseEntity<String> out = restTemplate.exchange(
+				WaterDashboardService + "eeMoveUpfrontToCompleted", HttpMethod.POST,
+				entity, String.class);
+
+		String res = out.getBody();
+		return res;
+	}
+	
+	
 	@RequestMapping(value = "/eeAddFullPayment", method = RequestMethod.POST)
 	@ResponseBody
 	public String eeAddFullPayment(PaymentFormBean paymentFormBean) {
@@ -5102,6 +5132,29 @@ ResponseEntity<String> out = restTemplate.exchange(
 
 		ResponseEntity<String> out = restTemplate.exchange(
 				WaterDashboardService + "mcApprovePayment", HttpMethod.POST,
+				entity, String.class);
+
+		String res = out.getBody();
+		return res;
+	}
+	
+	
+	@RequestMapping(value = "/saveEEProcessDtl", method = RequestMethod.POST)
+	@ResponseBody
+	public String saveEEProcessDtl(PaymentFormBean paymentFormBean,HttpSession session) {
+
+		if(null != session.getAttribute("LoginName")){
+			paymentFormBean.setLoginName(session.getAttribute("LoginName").toString());
+			}
+		RestTemplate restTemplate = new RestTemplate();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<?> entity = new HttpEntity(paymentFormBean,headers);
+
+		ResponseEntity<String> out = restTemplate.exchange(
+				WaterDashboardService + "saveEEProcessDtl", HttpMethod.POST,
 				entity, String.class);
 
 		String res = out.getBody();

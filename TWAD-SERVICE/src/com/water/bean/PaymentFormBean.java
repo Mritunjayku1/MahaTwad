@@ -1,6 +1,6 @@
 package com.water.bean;
 
-public class PaymentFormBean {
+public class PaymentFormBean implements Comparable< PaymentFormBean > {
 	
 	private String paymentId;
 	private String companyPaymentDtlID;
@@ -17,9 +17,13 @@ public class PaymentFormBean {
 	private String mcUser;
 	private String contactPersonName;
 	private String legCompName;
+	private String eeUser;
 	private String referenceFile;
 	private String referenceDate;
+	private String remarks;
 	private String receiptDate;
+	private String loginName;
+	private String availability;
 	
 	public String getReferenceFile() {
 		return referenceFile;
@@ -131,5 +135,33 @@ public class PaymentFormBean {
 	public void setReceiptDate(String receiptDate) {
 		this.receiptDate = receiptDate;
 	}
-
+	public String getEeUser() {
+		return eeUser;
+	}
+	public void setEeUser(String eeUser) {
+		this.eeUser = eeUser;
+	}
+	public String getRemarks() {
+		return remarks;
+	}
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+	public String getLoginName() {
+		return loginName;
+	}
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+	public String getAvailability() {
+		return availability;
+	}
+	public void setAvailability(String availability) {
+		this.availability = availability;
+	}
+	@Override
+	public int compareTo(PaymentFormBean o) {
+		 return this.getEeUser().compareTo(o.getEeUser());
+	}
+	
 }

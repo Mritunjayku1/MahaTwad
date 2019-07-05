@@ -87,5 +87,7 @@
 		<mapping class="com.water.model.MasterCircle"></mapping>
 		<mapping class="com.water.model.MasterHODivision"></mapping>
 		<mapping class="com.water.model.MasterSubDivision"></mapping>
+		<mapping class="com.water.model.MasterScheme"></mapping>
+		<mapping class="com.water.model.ProcessDtl"></mapping>
 	</session-factory>
 </hibernate-configuration>

@@ -183,7 +183,8 @@ function validateAddForm() {
 			var appIdArray = $(this).attr("id").split("_");
 			appId =  appIdArray[1];
 			companyPaymentDtlID=appIdArray[2];
-
+			availability=appIdArray[3];
+           if(availability=="CWSS"){
 			 var payment=$('#payment_'+appId).text();
 				if(payment == null || payment=='')
 				{
@@ -210,7 +211,19 @@ function validateAddForm() {
 					
 				}
 				});
-			
+           }
+           else{
+        	   $.ajax({
+   				type : "POST",
+   				url : "eeMoveUpfrontToCompleted.do",
+   				data : {"appId":appId},
+   				async : false,
+   	            success : function(response) {
+                       alert(response);
+					   window.location.reload(); 					
+   				}
+   				});
+           }
 		}); 
 		
 		$('.closeBtn,.imgClose').click(function(){
@@ -563,9 +576,17 @@ function validateAddForm() {
                                           
                                              <td class="class10" class="center"><input type="text" title="dd-mm-yyyy" id="receiptDate_${app.getAppId()}"  class="receiptDate" style="width: 100px;height: 25px;"/></td>
                                              <td>
+                                             <c:if test="${'Dedicated' eq app.getAvailability()}">
 											<input type="button"
-												name="approveBtn" id="approved_${app.getAppId()}_${app.getCompanyPaymentDtlID()}"
-												value="Upload DPR report" /></td>
+												name="approveBtn" id="approved_${app.getAppId()}_${app.getCompanyPaymentDtlID()}_${app.getAvailability()}"
+												value="Payment Verified" />
+												</c:if>
+												<c:if test="${'CWSS' eq app.getAvailability()}">
+												<input type="button"
+												name="approveBtn" id="approved_${app.getAppId()}_${app.getCompanyPaymentDtlID()}_${app.getAvailability()}"
+												value="Upload DPR report" />
+												</c:if>
+												</td>
                                            
                                         </tr>	 
           									 
