@@ -184,7 +184,7 @@ function validateAddForm() {
 			appId =  appIdArray[1];
 			companyPaymentDtlID=appIdArray[2];
 			availability=appIdArray[3];
-           if(availability=="CWSS"){
+          
 			 var payment=$('#payment_'+appId).text();
 				if(payment == null || payment=='')
 				{
@@ -193,6 +193,9 @@ function validateAddForm() {
 				}
 				
 			$('#appId').val(appId);
+			
+			 if(availability=="CWSS"){
+				 
 			$(".ui-dialog-content").dialog("close");
 			$( "#addDialog" ).dialog({ 'width':'600px','modal':'true'});
 			/* $('#paymentTypeId option[value="1"]').attr('disabled',true);

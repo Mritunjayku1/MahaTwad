@@ -719,7 +719,7 @@ window.onbeforeunload = function () {
 				inputVal[i].focus();
 				flag = false;
 			} else if (inputVal[i].attr('id') == 'reqMldId'
-					&& !/^[1-9][0-9]+$/.test(inputVal[i].val())) {
+					&& !/^([1-9][0-9]+|[1-9]+)$/.test(inputVal[i].val())) {
 				inputVal[i]
 						.parent('div')
 						.find('input')
