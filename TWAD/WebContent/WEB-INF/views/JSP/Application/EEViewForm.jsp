@@ -231,6 +231,14 @@ $('#backButton').click(function(){
 	</table>
 	<br/>
 	
+	<table class="table-bordered table table-striped display" style="width: 90%; font-size: 28px;">
+
+	<tbody><tr>
+		<td style="text-align: center; background-color: #FCFCF4; font-size: 17px; height: 10px; color: #800000; font-weight: bold;">Process Details</td>
+	</tr>
+	
+</tbody></table>
+	
 	<table id="myProcessTable" width="90%" align="center" style="background-color:#FCFCF4; ">
 	<tr height= "50px">
 	   
