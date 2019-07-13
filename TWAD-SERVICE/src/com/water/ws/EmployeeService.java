@@ -84,6 +84,7 @@ public class EmployeeService {
 
 			loginreult.setLoginDetailID(list.getUserId());
 			loginreult.setLoginName(list.getUserFirstName());
+			loginreult.setUserName(list.getLoginUserName());
 			loginreult.setRoleID(list.getUserRole().getRoleId());
 			if(null !=list.getUserDivision()){
 			 loginreult.setDivisionId(list.getUserDivision().getDivisionId()+"");

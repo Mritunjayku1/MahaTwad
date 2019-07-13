@@ -208,42 +208,16 @@ $(function(){
           							<td > <a href="EEViewForm.do?appId=${app.getAppId()}" style="color: rgb(128,128,128)">${app.getAppId()}</a></td>
                                             <td>${app.getLegCompName()}</td>
                                             <td>${app.getContactPersonName()}</td>
-                                            <%--  <td>${app.getCategoryType()}</td> --%>
                                             <td class="center">${app.getDoorNo()} ${app.getPlotNo()} ${app.getStreetName()},${app.getPinCode()} </td>
-                                         <%--  <td>${app.getMobileNum()}</td>
-                                          <td>${app.getEmailAddr()}</td> --%>
                                              <td class="center">${app.getDivisionName()}</td>
-                                            <%--  <td class="center">${app.getReqMld()}</td> --%>
                                               <td class="center"><textarea  name="managementComments" style="width:100%;height:100%;">${app.getManagementComments()}</textarea></td>
                                                  <c:choose>
-                                                 <c:when test="${not empty app.getProcessDtlList()}">
-                                                  <c:forEach items="${app.getProcessDtlList()}" var="process" >
-                                                  
-                                           <c:choose>
-                                                   <c:when test="${'SE' eq process.getEeUser()}">
-                                                 <td class="center">${process.getRemarks()}</td>
-                                                 </c:when>
-                                                 <c:otherwise>
-                                                   <td class="center"></td>
-                                                 </c:otherwise>
-                                                 </c:choose>
-                                                  <c:choose>
-                                                  <c:when test="${'CE' eq process.getEeUser()}">
-                                           <td class="center">${process.getRemarks()}</td>
-                                           </c:when>
-                                            <c:otherwise>
-                                                   <td class="center"></td>
-                                                 </c:otherwise>
-                                            </c:choose>
-                                             <c:choose>
-                                            <c:when test="${'Board' eq process.getEeUser()}">
-                                            <td class="center">${process.getRemarks()}</td>
-                                            </c:when>
-                                             <c:otherwise>
-                                                   <td class="center"></td>
-                                                 </c:otherwise>
-                                            </c:choose>
-                                            </c:forEach>
+                                                 <c:when test="${not empty app.getProcessMap()}">
+                                               
+                                                <td>${app.getProcessMap().get("SE")}</td>
+                                            <td>${app.getProcessMap().get("CE")}</td>
+                                            <td>${app.getProcessMap().get("Board")}</td>
+                                             
                                             </c:when>
                                              <c:otherwise>
                                                    <td class="center"></td>
@@ -251,7 +225,7 @@ $(function(){
                                                     <td class="center"></td>                                                
                                              </c:otherwise>
                                             </c:choose>
-                                            
+                                           
                                             <td><input type="button"
 													class="paymentClass" id="${app.getAppId()}" value="Add Process Status"
 													style="width: auto;"/></td>

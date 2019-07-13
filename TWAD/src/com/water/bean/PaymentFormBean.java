@@ -1,5 +1,7 @@
 package com.water.bean;
 
+import java.util.Date;
+
 public class PaymentFormBean {
 	
 	private String paymentId;
@@ -24,7 +26,7 @@ public class PaymentFormBean {
 	private String receiptDate;
 	private String loginName;
 	private String availability;
-	
+	private Date createdDate;
 	
 	public String getReferenceFile() {
 		return referenceFile;
@@ -159,6 +161,12 @@ public class PaymentFormBean {
 	}
 	public void setAvailability(String availability) {
 		this.availability = availability;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }

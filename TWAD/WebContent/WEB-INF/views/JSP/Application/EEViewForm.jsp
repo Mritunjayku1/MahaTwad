@@ -241,20 +241,22 @@ $('#backButton').click(function(){
 	
 	<table id="myProcessTable" width="90%" align="center" style="background-color:#FCFCF4; ">
 	<tr height= "50px">
-	   
+	    <th width="10%">User</th>
 	    <th width="20%">Remarks</th>
 	    <th width="20%">Reference File</th>
 	    <th width="20%">Reference Date</th>
-	     <th width="20%">Updated By</th>
+	     <th width="20%">Updated Date</th>
+	     <th width="10%">Updated By</th>
 	
 	</tr>
 	
 	 <c:forEach items="${list.application.getProcessDtlList()}" var="processDetail" >
 	 <tr height= "50px">
-	   
+	   <td>${processDetail.getEeUser() }</td>
 	       <td>${processDetail.getRemarks() }</td>
 	        <td>${processDetail.getReferenceFile() }</td>
 	         <td>${processDetail.getReferenceDate() }</td>
+	          <td>${processDetail.getCreatedDate() }</td>
 	          <td>${processDetail.getLoginName() }</td>
 	 
 	 </tr>

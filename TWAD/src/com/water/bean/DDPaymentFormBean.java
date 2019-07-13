@@ -2,6 +2,7 @@ package com.water.bean;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class DDPaymentFormBean {
 
@@ -73,7 +74,7 @@ public class DDPaymentFormBean {
  	 private String bankRefNo;
  	 
  	 private List<PaymentFormBean> processDtlList;
- 	
+ 	private Map<String,String> processMap;
  	 
  	 
 	
@@ -494,6 +495,12 @@ public class DDPaymentFormBean {
 	}
 	public void setProcessDtlList(List<PaymentFormBean> processDtlList) {
 		this.processDtlList = processDtlList;
+	}
+	public Map<String,String> getProcessMap() {
+		return processMap;
+	}
+	public void setProcessMap(Map<String,String> processMap) {
+		this.processMap = processMap;
 	}
 
 }

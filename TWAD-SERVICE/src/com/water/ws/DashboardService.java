@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.ws.rs.Consumes;
@@ -2906,8 +2908,23 @@ ddPaymentFormBean.setPaymentList(ddPaymentFormBeans);
 List<PaymentFormBean> processDtlList  = new DashboardDaoImpl().getProcessDtl(ddPaymentFormBean.getAppId(),"EEUSER");
 Collections.sort(processDtlList);
 ddPaymentFormBean.setProcessDtlList(processDtlList);
+Map<String,String> processMap = new HashMap<>();
+if(processDtlList !=null){
+for(int i=processDtlList.size()-1; i>=0;i--){
+	PaymentFormBean paymentFormBean = processDtlList.get(i);
+	String key = paymentFormBean.getEeUser();
+	String value = paymentFormBean.getRemarks();
+	
+	if(processMap.containsKey(key)){
+		processMap.put(key, value);
+	}
+	else{
+		processMap.put(key, value);
+	}
+}
+}
 
-
+ddPaymentFormBean.setProcessMap(processMap);
 
 		return ddPaymentFormBean;
 	}

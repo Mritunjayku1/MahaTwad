@@ -2634,6 +2634,7 @@ public List<PaymentFormBean> getProcessDtl(String appId,String user){
 		            .add(Projections.property("processDtl.referenceDate"),"referenceDate")
 		            .add(Projections.property("processDtl.remarks"),"remarks")
 		            .add(Projections.property("processDtl.createUserId"),"loginName")
+		            .add(Projections.property("processDtl.createTs"),"createdDate")
 		            )
 			.add(Restrictions.eq("companyDtl.appId", appId))
 			.add(Restrictions.eq("processDtl.user", user))

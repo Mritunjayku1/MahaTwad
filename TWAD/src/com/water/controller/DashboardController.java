@@ -5143,8 +5143,8 @@ ResponseEntity<String> out = restTemplate.exchange(
 	@ResponseBody
 	public String saveEEProcessDtl(PaymentFormBean paymentFormBean,HttpSession session) {
 
-		if(null != session.getAttribute("LoginName")){
-			paymentFormBean.setLoginName(session.getAttribute("LoginName").toString());
+		if(null != session.getAttribute("LoginUserName")){
+			paymentFormBean.setLoginName(session.getAttribute("LoginUserName").toString());
 			}
 		RestTemplate restTemplate = new RestTemplate();
 

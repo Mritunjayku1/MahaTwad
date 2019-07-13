@@ -454,10 +454,11 @@ public class AdminController {
 			if (loginBean != null && "success".equals(loginBean.getResult())) {
 
 				isValidUser = true;
-				session.setAttribute("LoginDetailID",
-						loginBean.getLoginDetailID());
+				session.setAttribute("LoginDetailID",loginBean.getLoginDetailID());
 				session.setAttribute("LoginID", loginBean.getLoginDetailID());
 				session.setAttribute("LoginName", loginBean.getLoginName());
+				session.setAttribute("LoginUserName", loginBean.getUserName());
+				
 				session.setAttribute("OfficeId", loginBean.getDivisionId());
 				session.setAttribute("RoleID", loginBean.getRoleID());
 				if (loginBean.getRoleID() == 1) {

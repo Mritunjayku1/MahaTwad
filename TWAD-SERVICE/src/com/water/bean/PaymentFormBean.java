@@ -1,5 +1,7 @@
 package com.water.bean;
 
+import java.util.Date;
+
 public class PaymentFormBean implements Comparable< PaymentFormBean > {
 	
 	private String paymentId;
@@ -24,6 +26,7 @@ public class PaymentFormBean implements Comparable< PaymentFormBean > {
 	private String receiptDate;
 	private String loginName;
 	private String availability;
+	private Date createdDate;
 	
 	public String getReferenceFile() {
 		return referenceFile;
@@ -159,9 +162,19 @@ public class PaymentFormBean implements Comparable< PaymentFormBean > {
 	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
 	@Override
 	public int compareTo(PaymentFormBean o) {
-		 return this.getEeUser().compareTo(o.getEeUser());
+		int c = o.getEeUser().compareTo(this.getEeUser());
+		if(c==0)
+		 c = o.getCreatedDate().compareTo(this.getCreatedDate());
+		return c;
 	}
+	
 	
 }
