@@ -2908,19 +2908,20 @@ ddPaymentFormBean.setPaymentList(ddPaymentFormBeans);
 List<PaymentFormBean> processDtlList  = new DashboardDaoImpl().getProcessDtl(ddPaymentFormBean.getAppId(),"EEUSER");
 Collections.sort(processDtlList);
 ddPaymentFormBean.setProcessDtlList(processDtlList);
-Map<String,String> processMap = new HashMap<>();
+Map<String,PaymentFormBean> processMap = new HashMap<>();
+processMap.put("CE", new PaymentFormBean());
+processMap.put("SE",  new PaymentFormBean());
+processMap.put("Board",  new PaymentFormBean());
 if(processDtlList !=null){
 for(int i=processDtlList.size()-1; i>=0;i--){
 	PaymentFormBean paymentFormBean = processDtlList.get(i);
 	String key = paymentFormBean.getEeUser();
-	String value = paymentFormBean.getRemarks();
+	PaymentFormBean value = paymentFormBean;
 	
 	if(processMap.containsKey(key)){
 		processMap.put(key, value);
 	}
-	else{
-		processMap.put(key, value);
-	}
+	
 }
 }
 

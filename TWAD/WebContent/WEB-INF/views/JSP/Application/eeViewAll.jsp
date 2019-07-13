@@ -214,9 +214,9 @@ $(function(){
                                                  <c:choose>
                                                  <c:when test="${not empty app.getProcessMap()}">
                                                
-                                                <td>${app.getProcessMap().get("SE")}</td>
-                                            <td>${app.getProcessMap().get("CE")}</td>
-                                            <td>${app.getProcessMap().get("Board")}</td>
+                                                <td>${app.getProcessMap().get("SE").getRemarks()}</td>
+                                            <td>${app.getProcessMap().get("CE").getRemarks()}</td>
+                                            <td>${app.getProcessMap().get("Board").getRemarks()}</td>
                                              
                                             </c:when>
                                              <c:otherwise>

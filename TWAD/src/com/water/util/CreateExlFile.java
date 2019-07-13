@@ -2,6 +2,7 @@ package com.water.util;
 
 import  java.io.*;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -268,28 +269,26 @@ public class CreateExlFile{
              row.createCell(17).setCellValue(this.checkNull(ddPaymentFormBean.getCircle()));
              row.createCell(18).setCellValue(this.checkNull(ddPaymentFormBean.getRegion()));
              row.createCell(19).setCellValue(this.checkNull(ddPaymentFormBean.getDivisionName()));
+           
+            Map<String,PaymentFormBean> paymentFormBeanMap  = ddPaymentFormBean.getProcessMap();
+            PaymentFormBean paymentFormBeanSE = paymentFormBeanMap.get("SE");
+            PaymentFormBean paymentFormBeanCE = paymentFormBeanMap.get("CE");
+            PaymentFormBean paymentFormBeanBoard = paymentFormBeanMap.get("Board");
+            
+            row.createCell(20).setCellValue( paymentFormBeanSE.getLoginName());
+            row.createCell(21).setCellValue( paymentFormBeanSE.getRemarks());
+            row.createCell(22).setCellValue( paymentFormBeanSE.getReferenceFile());
+            row.createCell(23).setCellValue( paymentFormBeanSE.getReferenceDate());
+            row.createCell(24).setCellValue( paymentFormBeanCE.getLoginName());
+            row.createCell(25).setCellValue( paymentFormBeanCE.getRemarks());
+            row.createCell(26).setCellValue( paymentFormBeanCE.getReferenceFile());
+            row.createCell(27).setCellValue( paymentFormBeanCE.getReferenceDate());
+            row.createCell(28).setCellValue( paymentFormBeanBoard.getLoginName());
+            row.createCell(29).setCellValue( paymentFormBeanBoard.getRemarks());
+            row.createCell(30).setCellValue( paymentFormBeanBoard.getReferenceFile());
+            row.createCell(31).setCellValue( paymentFormBeanBoard.getReferenceDate());
+           
              
-             for(PaymentFormBean paymentFormBean :  ddPaymentFormBean.getProcessDtlList()){
-             
-            	 if(null != paymentFormBean.getEeUser() && paymentFormBean.getEeUser().equals("SE")){
-             row.createCell(20).setCellValue( paymentFormBean.getLoginName());
-             row.createCell(21).setCellValue( paymentFormBean.getRemarks());
-             row.createCell(22).setCellValue(  paymentFormBean.getReferenceFile());
-             row.createCell(23).setCellValue(paymentFormBean.getReferenceDate());
-            	 }
-            	 if(null != paymentFormBean.getEeUser() && paymentFormBean.getEeUser().equals("CE")){
-             row.createCell(24).setCellValue( paymentFormBean.getLoginName());
-             row.createCell(25).setCellValue( paymentFormBean.getRemarks());
-             row.createCell(26).setCellValue( paymentFormBean.getReferenceFile());
-             row.createCell(27).setCellValue(paymentFormBean.getReferenceDate());
-            	 }
-            	 if(null != paymentFormBean.getEeUser() && paymentFormBean.getEeUser().equals("Board")){
-             row.createCell(28).setCellValue( paymentFormBean.getLoginName());
-             row.createCell(29).setCellValue( paymentFormBean.getRemarks());
-             row.createCell(30).setCellValue( paymentFormBean.getReferenceFile());
-             row.createCell(31).setCellValue(paymentFormBean.getReferenceDate());
-            	 }
-             }
              
              row.createCell(32).setCellValue(ddPaymentFormBean.getApplicationFee());
              row.createCell(33).setCellValue(this.checkNull(ddPaymentFormBean.getUpfrontCharges()+""));

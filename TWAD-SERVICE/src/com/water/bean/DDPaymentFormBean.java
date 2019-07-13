@@ -76,7 +76,7 @@ public class DDPaymentFormBean {
  	 
  	 
  	 private List<PaymentFormBean> processDtlList;
- 	private Map<String,String> processMap;
+ 	private Map<String,PaymentFormBean> processMap;
  	
 	public String getMcSLTCUser() {
 		return mcSLTCUser;
@@ -501,10 +501,10 @@ public class DDPaymentFormBean {
 	public void setProcessDtlList(List<PaymentFormBean> processDtlList) {
 		this.processDtlList = processDtlList;
 	}
-	public Map<String,String> getProcessMap() {
+	public Map<String,PaymentFormBean> getProcessMap() {
 		return processMap;
 	}
-	public void setProcessMap(Map<String,String> processMap) {
+	public void setProcessMap(Map<String,PaymentFormBean> processMap) {
 		this.processMap = processMap;
 	}
 	
